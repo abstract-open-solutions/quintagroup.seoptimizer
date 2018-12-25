@@ -501,4 +501,4 @@ customMetaTagsFunctions.getParentElementById = function(currnode, id) {
     }
 
     return parent;
-}
+};
