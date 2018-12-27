@@ -3,10 +3,11 @@ from DateTime import DateTime
 from Acquisition import aq_inner
 from zope.component import queryAdapter
 from zope.component import queryMultiAdapter
+from zope.component import getUtility
 from zope.schema.interfaces import InvalidValue
 
 from plone.memoize import view, ram
-
+from plone.registry.interfaces import IRegistry
 from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFPlone.utils import getSiteEncoding
@@ -40,7 +41,8 @@ class SEOContext(BrowserView):
                                      name="plone_portal_state")
         self.pcs = queryMultiAdapter((self.context, self.request),
                                      name="plone_context_state")
-        self.gseo = queryAdapter(self.pps.portal(), ISEOConfigletSchema)
+#         self.gseo = queryAdapter(self.pps.portal(), ISEOConfigletSchema)
+        self.gseo = getUtility(IRegistry).forInterface(ISEOConfigletSchema)
         self._seotags = self._getSEOTags()
 
     def __getitem__(self, key):
@@ -152,7 +154,7 @@ class SEOContext(BrowserView):
         """
         result = []
         if self.gseo:
-            for tag in self.gseo.default_custom_metatags:
+            for tag in set(self.gseo.default_custom_metatags):
                 name_value = tag.split(SEPERATOR)
                 if name_value[0]:
                     result.append({'meta_name': name_value[0],
@@ -178,7 +180,8 @@ class SEOContextPropertiesView(BrowserView):
         super(SEOContextPropertiesView, self).__init__(*args, **kwargs)
         self.pps = queryMultiAdapter((self.context, self.request),
                                      name="plone_portal_state")
-        self.gseo = queryAdapter(self.pps.portal(), ISEOConfigletSchema)
+#         self.gseo = queryAdapter(self.pps.portal(), ISEOConfigletSchema)
+        self.gseo = getUtility(IRegistry).forInterface(ISEOConfigletSchema)        
 
     def test(self, condition, first, second):
         """
@@ -363,5 +366,7 @@ class VisibilityCheckerView(BrowserView):
         aq_inner(self.context)
         plone = queryMultiAdapter((self, self.request),
                                   name="plone_portal_state").portal()
-        adapter = ISEOConfigletSchema(plone)
-        return bool(self.context.portal_type in adapter.types_seo_enabled)
+        
+#         adapter = ISEOConfigletSchema(plone)
+        setting = getUtility(IRegistry).forInterface(ISEOConfigletSchema)
+        return bool(self.context.portal_type in set(setting.types_seo_enabled))

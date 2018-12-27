@@ -34,7 +34,7 @@
          own, .interfaces.IPloneSEOLayer layer      -->
 
     <!-- Registries for configlet -->
-    <adapter factory=".seo_configlet.SEOConfigletAdapter" />
+<!-- old    <adapter factory=".seo_configlet.SEOConfigletAdapter" />
 
     <browser:page
         name="seo-controlpanel"
@@ -43,7 +43,14 @@
         layer=".interfaces.IPloneSEOLayer"
         permission="cmf.ManagePortal"
         />
-
+        -->
+    <!-- Control panel form -->
+    <browser:page 
+        name="seo-controlpanel"
+        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+        class=".seo_configlet.SEOConfigletControlPanel"
+        permission="cmf.ManagePortal"
+        />
     <!-- The customized title -->
     <browser:viewlet
         name="plone.htmlhead.title"
