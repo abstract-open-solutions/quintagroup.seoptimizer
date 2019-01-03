@@ -83,6 +83,7 @@ class SEOContext(BrowserView):
         }
         #seotags["seo_nonEmptylocalMetaTags"] = \
         #    bool(seotags["seo_localCustomMetaTags"])
+
         return seotags
 
     def getSEOProperty(self, property_name, accessor='', default=None):

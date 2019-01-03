@@ -217,7 +217,9 @@ class CustomScriptViewlet(ViewletBase):
         return ''
 
     def render(self):
-        return safe_unicode("""%s""" % self.getCustomScript())
+        if not bool(self.getCustomScript()):st=''
+
+        return safe_unicode("""%s""" % st)
 
 
 class CanonicalUrlViewlet(ViewletBase):

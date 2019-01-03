@@ -19,12 +19,12 @@
   </record>
   <record name="quintagroup.seoptimizer.browser.seo_configlet.ISEOConfigletSchema.custom_script" interface="quintagroup.seoptimizer.browser.seo_configlet.ISEOConfigletSchema" field="custom_script">
     <field type="plone.registry.field.Text">
-      <default/>
+      <default></default>
       <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="quintagroup.seoptimizer" ns0:translate="help_custom_script">This JavaScript code will be included in the rendered HTML as entered in the page header.</description>
       <required>False</required>
       <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="quintagroup.seoptimizer" ns0:translate="label_custom_script">Header JavaScript</title>
     </field>
-    <value/>
+    <value></value>
   </record>  
   <record name="quintagroup.seoptimizer.browser.seo_configlet.ISEOConfigletSchema.types_seo_enabled" interface="quintagroup.seoptimizer.browser.seo_configlet.ISEOConfigletSchema" field="types_seo_enabled">
     <field type="plone.registry.field.Set">
