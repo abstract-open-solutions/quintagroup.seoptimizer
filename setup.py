@@ -5,7 +5,7 @@ This module contains the tool of quintagroup.seoptimizer
 import os
 from setuptools import setup, find_packages
 
-version = '4.3'
+version = '5.0'
 
 setup(name='quintagroup.seoptimizer',
       version=version,
@@ -24,6 +24,7 @@ setup(name='quintagroup.seoptimizer',
           "Framework :: Plone :: 4.1",
           "Framework :: Plone :: 4.2",
           "Framework :: Plone :: 4.3",
+          "Framework :: Plone :: 5.0",          
           "Framework :: Zope2",
           "Framework :: Zope3",
           "Programming Language :: Python",

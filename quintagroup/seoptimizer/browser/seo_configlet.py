@@ -3,7 +3,7 @@ from plone.app.registry.browser import controlpanel
 from zope.interface import Interface
 from zope.interface import implements
 from zope.component import adapts
-from zope.schema import Bool, Choice, Tuple, List
+from zope.schema import Bool, Choice, Tuple, List,Set
 from zope.schema import SourceText
 # BBB Support different versions of Plone
 # getSite = None
@@ -53,13 +53,13 @@ class ISEOConfigletBaseSchema(Interface):
                       'Example: "metaname accessor".'),
         required=False)
 
-    types_seo_enabled = Tuple(
+    types_seo_enabled = List(
         title=_("label_content_type_title", default='Content Types'),
         description=_("description_seo_content_types",
                       default='Select content types that will have SEO '
                       'properties enabled.'),
         required=False,
-        missing_value=tuple(),
+        missing_value=List(),
         value_type=Choice(
             vocabulary="plone.app.vocabularies.ReallyUserFriendlyTypes"))
 

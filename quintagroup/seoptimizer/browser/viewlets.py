@@ -5,6 +5,8 @@ from Acquisition import aq_inner
 from zope.component import queryAdapter
 from zope.component import queryMultiAdapter
 from zope.component import getMultiAdapter
+from zope.component import getUtility
+from plone.registry.interfaces import IRegistry
 from plone.app.layout.viewlets.common import ViewletBase
 
 from Products.CMFPlone.utils import safe_unicode, getSiteEncoding
@@ -40,7 +42,8 @@ class SEOTagsViewlet(ViewletBase):
         result = SortedDict()
         pps = queryMultiAdapter((self.context, self.request),
                                 name="plone_portal_state")
-        seo_global = queryAdapter(pps.portal(), ISEOConfigletSchema)
+#         seo_global = queryAdapter(pps.portal(), ISEOConfigletSchema)
+        seo_global = getUtility(IRegistry).forInterface(ISEOConfigletSchema)
         seo_context = queryMultiAdapter((self.context, self.request),
                                         name='seo_context')
 
@@ -205,9 +208,10 @@ class CustomScriptViewlet(ViewletBase):
     """ Simple viewlet for custom script rendering.
     """
     def getCustomScript(self):
-        pps = queryMultiAdapter((self.context, self.request),
-                                name="plone_portal_state")
-        gseo = queryAdapter(pps.portal(), ISEOConfigletSchema)
+#         pps = queryMultiAdapter((self.context, self.request),
+#                                 name="plone_portal_state")
+#         gseo = queryAdapter(pps.portal(), ISEOConfigletSchema)
+        gseo = getUtility(IRegistry).forInterface(ISEOConfigletSchema)
         if gseo:
             return gseo.custom_script
         return ''

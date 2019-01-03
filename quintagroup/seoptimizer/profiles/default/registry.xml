@@ -1,10 +1,10 @@
-<registry>
-  <record name="quintagroup.seoptimizer.browser.seo_configlet.ISEOConfigletSchema.external_keywords_test" interface="quintagroup.seoptimizer.browser.seo_configlet.ISEOConfigletSchema" field="allow_uncommon">
+<registry>types_seo_enabled
+  <record name="quintagroup.seoptimizer.browser.seo_configlet.ISEOConfigletSchema.external_keywords_test" interface="quintagroup.seoptimizer.browser.seo_configlet.ISEOConfigletSchema" field="external_keywords_test">
     <field type="plone.registry.field.Bool">
       <default>False</default>
-      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="quintagroup.seoptimizer" ns0:translate="">If enabled, it will be possible to add tags other than those in the list below to content objects that support this. If disabled, all tags must be in the pre-defined list.</description>
+      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="quintagroup.seoptimizer" ns0:translate="description_external_keywords_test">Make keywords test by opening context url as external resource with urllib2.openurl(). This is useful when xdv/Deliverance transformation is used on the site.</description>
       <required>False</required>
-      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="quintagroup.seoptimizer" ns0:translate="">Allow uncommon tags globally</title>
+      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="quintagroup.seoptimizer" ns0:translate="label_external_keywords_test">External keywords check</title>
     </field>
     <value>False</value>
   </record>
@@ -16,42 +16,81 @@
       <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="quintagroup.seoptimizer" ns0:translate="label_exposeDCMetaTags">Expose <abbr title="Dublin Core">DC</abbr>meta tags</title>
     </field>
     <value>True</value>
+  </record>
+  <record name="quintagroup.seoptimizer.browser.seo_configlet.ISEOConfigletSchema.custom_script" interface="quintagroup.seoptimizer.browser.seo_configlet.ISEOConfigletSchema" field="custom_script">
+    <field type="plone.registry.field.Text">
+      <default/>
+      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="quintagroup.seoptimizer" ns0:translate="help_custom_script">This JavaScript code will be included in the rendered HTML as entered in the page header.</description>
+      <required>False</required>
+      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="quintagroup.seoptimizer" ns0:translate="label_custom_script">Header JavaScript</title>
+    </field>
+    <value/>
   </record>  
-  <record name="quintagroup.seoptimizer.browser.seo_configlet.ISEOConfigletSchema.metatags_order" interface="quintagroup.seoptimizer.browser.seo_configlet.ISEOConfigletSchema" field="metatags_order">
+  <record name="quintagroup.seoptimizer.browser.seo_configlet.ISEOConfigletSchema.types_seo_enabled" interface="quintagroup.seoptimizer.browser.seo_configlet.ISEOConfigletSchema" field="types_seo_enabled">
     <field type="plone.registry.field.Set">
       <default/>
-      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="quintagroup.seoptimizer" ns0:translate="">If you want to ensure that users pick at least one tag in a given category, list the category name here.</description>
-      <title>Required categories</title>
+      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="quintagroup.seoptimizer" ns0:translate="help_fields">Fill in fields (one per line) which statistics of keywords usage should be calculated for.</description>
+      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="quintagroup.seoptimizer" ns0:translate="label_fields">Fields for keywords statistic calculation.</title>
       <value_type type="plone.registry.field.TextLine">
-        <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="quintagroup.seoptimizer" ns0:translate="">Category</title>
+        <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="quintagroup.seoptimizer" ns0:translate="label_fields">Fields for keywords statistic calculation.</title>
       </value_type>
     </field>
     <value>
-   <element value="DC.publisher"/>
-   <element value="DC.description"/>
-   <element value="DC.contributors"/>
-   <element value="DC.creator"/>
-   <element value="DC.format"/>
-   <element value="DC.rights"/>
-   <element value="DC.language"/>
-   <element value="DC.date.modified"/>
-   <element value="DC.date.created"/>
-   <element value="DC.type"/>
-   <element value="DC.subject"/>
-   <element value="DC.distribution"/>
-   <element value="description"/>
-   <element value="keywords"/>
-   <element value="robots"/>
-   <element value="distribution"/>
-    </value>
+    	<element>seo_title</element>
+    	<element>seo_description</element>
+    	<element>seo_keywords</element>
+    </value>   	    	    	    	    	    	    	
+  </record>  
+  <record name="quintagroup.seoptimizer.browser.seo_configlet.ISEOConfigletSchema.types_seo_enabled" interface="quintagroup.seoptimizer.browser.seo_configlet.ISEOConfigletSchema" field="types_seo_enabled">
+    <field type="plone.registry.field.Set">
+      <default/>
+      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="quintagroup.seoptimizer" ns0:translate="description_seo_content_types">Select content types that will have SEO properties enabled.</description>
+      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="quintagroup.seoptimizer" ns0:translate="label_content_type_title">Content Types</title>
+      <value_type type="plone.registry.field.TextLine">
+        <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="quintagroup.seoptimizer" ns0:translate="label_content_type_title">Content Types</title>
+      </value_type>
+    </field>
+    <value>
+    	<element>Document</element>
+    	<element>File</element>
+    	<element>News Item</element>
+    </value>   	    	    	    	    	    	    	
+  </record>    
+  <record name="quintagroup.seoptimizer.browser.seo_configlet.ISEOConfigletSchema.metatags_order" interface="quintagroup.seoptimizer.browser.seo_configlet.ISEOConfigletSchema" field="metatags_order">
+    <field type="plone.registry.field.Set">
+      <default/>
+      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="quintagroup.seoptimizer" ns0:translate="help_metatags_order">Fill in meta tags (one per line) in the order in which they will appear on site source pages.Example: "metaname accessor".</description>
+      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="quintagroup.seoptimizer" ns0:translate="label_metatags_order">Meta tags order in the page.</title>
+      <value_type type="plone.registry.field.TextLine">
+        <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="quintagroup.seoptimizer" ns0:translate="label_metatags_order">Meta tags order</title>
+      </value_type>
+    </field>
+    <value>
+    	<element>DC.publisher</element>
+    	<element>DC.description</element>
+    	<element>DC.contributors</element>
+    	<element>DC.creator</element>
+    	<element>DC.format</element>
+    	<element>DC.rights</element>
+    	<element>DC.language</element>
+    	<element>DC.date.modified</element>
+    	<element>DC.date.created</element>
+    	<element>DC.type</element>
+    	<element>DC.subject</element>
+    	<element>DC.distribution</element>
+    	<element>description</element>
+    	<element>keywords</element>
+    	<element>robots</element>
+    	<element>distribution</element>
+    	</value>   	    	    	    	    	    	    	
   </record>
   <record name="quintagroup.seoptimizer.browser.seo_configlet.ISEOConfigletSchema.default_custom_metatags" interface="quintagroup.seoptimizer.browser.seo_configlet.ISEOConfigletSchema" field="default_custom_metatags">
     <field type="plone.registry.field.Set">
       <default/>
-      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="quintagroup.seoptimizer" ns0:translate="">List pre-defined tags here. Tags can either be simple strings or categorised using the form Category-TagName.</description>
-      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="quintagroup.seoptimizer" ns0:translate="">Pre-defined tags</title>
+      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="quintagroup.seoptimizer" ns0:translate="help_default_custom_metatags">Fill in custom metatag names (one per line) which will appear on qseo_properties edit tab.Example: "metaname|metacontent" or "metaname".</description>
+      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="quintagroup.seoptimizer" ns0:translate="label_default_custom_metatags">Default custom metatags.</title>
       <value_type type="plone.registry.field.TextLine">
-        <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="quintagroup.seoptimizer" ns0:translate="">Tag</title>
+        <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="quintagroup.seoptimizer" ns0:translate="label_default_custom_metatags">Default custom metatags.</title>
       </value_type>
     </field>
     <value/>
@@ -59,82 +98,81 @@
   <record name="quintagroup.seoptimizer.browser.seo_configlet.ISEOConfigletSchema.fields" interface="quintagroup.seoptimizer.browser.seo_configlet.ISEOConfigletSchema" field="fields">
     <field type="plone.registry.field.Set">
       <default/>
-      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="quintagroup.seoptimizer" ns0:translate="">If you want to ensure that users pick at most one tag in a given category, list the category name here.</description>
-      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="quintagroup.seoptimizer" ns0:translate="">Unique categories</title>
+      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="quintagroup.seoptimizer" ns0:translate="help_fields">Fill in fields (one per line) which statistics of keywords usage should be calculated for.</description>
+      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="quintagroup.seoptimizer" ns0:translate="label_fields">Fields for keywords statistic calculation.</title>
       <value_type type="plone.registry.field.TextLine">
         <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="quintagroup.seoptimizer" ns0:translate="">Category</title>
       </value_type>
     </field>
     <value>
-   <element value="seo_title"/>
-   <element value="seo_description"/>
-   <element value="seo_keywords"/>
+    	<element>seo_title</element>
+    	<element>seo_description</element>
+    	<element>seo_keywords</element>   
     </value>
   </record>
   <record name="quintagroup.seoptimizer.browser.seo_configlet.ISEOConfigletSchema.stop_words" interface="quintagroup.seoptimizer.browser.seo_configlet.ISEOConfigletSchema" field="stop_words">
     <field type="plone.registry.field.Set">
       <default/>
-      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="quintagroup.seoptimizer" ns0:translate="">If you want to ensure that users pick at most one tag in a given category, list the category name here.</description>
-      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="quintagroup.seoptimizer" ns0:translate="">Unique categories</title>
+      <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="quintagroup.seoptimizer" ns0:translate="help_stop_words">Fill in stop words (one per line) which will be excluded from keywords statistics calculation.</description>
+      <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="quintagroup.seoptimizer" ns0:translate="label_stop_words">Stop words.</title>
       <value_type type="plone.registry.field.TextLine">
-        <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="quintagroup.seoptimizer" ns0:translate="">Category</title>
+        <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="quintagroup.seoptimizer" ns0:translate="label_stop_words">Stop words.</title>
       </value_type>
     </field>
     <value>
-   <element value="a"/>
-   <element value="an"/>
-   <element value="amp"/>
-   <element value="and"/>
-   <element value="are"/>
-   <element value="arial"/>
-   <element value="as"/>
-   <element value="at"/> 
-   <element value="be"/>
-   <element value="but"/>
-   <element value="by"/>
-   <element value="can"/>
-   <element value="com"/>
-   <element value="do"/>
-   <element value="font"/>
-   <element value="for"/>
-   <element value="from"/>
-   <element value="gif"/>
-   <element value="had"/>
-   <element value="has"/>
-   <element value="have"/>
-   <element value="he"/>
-   <element value="helvetica"/>
-   <element value="her"/>
-   <element value="his"/>
-   <element value="how"/>
-   <element value="href"/>
-   <element value="i"/>
-   <element value="if"/>
-   <element value="in"/>
-   <element value="is"/>
-   <element value="it"/>
-   <element value="javascript"/>
-   <element value="jpg"/>
-   <element value="made"/>
-   <element value="net"/>
-   <element value="of"/>
-   <element value="on"/>
-   <element value="or"/>
-   <element value="org"/>
-   <element value="our"/>
-   <element value="sans"/>
-   <element value="see"/>
-   <element value="serif"/>
-   <element value="she"/>
-   <element value="that"/>
-   <element value="the"/>
-   <element value="this"/>
-   <element value="to"/>
-   <element value="us"/>
-   <element value="we"/>
-   <element value="with"/>
-   <element value="you"/>
-   <element value="your"/>
+    	<element>a</element>
+    	<element>an</element>
+    	<element>amp</element>
+    	<element>and</element>
+    	<element>are</element>
+    	<element>arial</element>
+    	<element>as</element>
+    	<element>at</element>
+    	<element>be</element>
+    	<element>but</element>
+    	<element>by</element>
+    	<element>can</element>
+    	<element>com</element>
+    	<element>do</element>
+    	<element>font</element>
+    	<element>for</element>
+    	<element>from</element>
+    	<element>gif</element>
+    	<element>had</element>
+    	<element>has</element>
+    	<element>have</element>
+    	<element>he</element>
+    	<element>helvetica</element>
+    	<element>her</element>
+    	<element>how</element>
+    	<element>href</element>
+    	<element>i</element>
+    	<element>if</element>
+    	<element>in</element>
+    	<element>is</element>
+    	<element>it</element>
+    	<element>javascript</element>
+    	<element>jpg</element>
+    	<element>made</element>
+    	<element>net</element>
+    	<element>of</element>
+    	<element>on</element>
+    	<element>or</element>
+    	<element>org</element>
+    	<element>our</element>
+    	<element>sans</element>
+    	<element>see</element>
+    	<element>serif</element>
+    	<element>she</element>
+    	<element>that</element>
+    	<element>the</element>
+    	<element>this</element>
+    	<element>to</element>
+    	<element>us</element>
+    	<element>we</element>
+    	<element>with</element>
+    	<element>you</element>
+    	<element>your</element>
     </value>
   </record>  
 </registry>

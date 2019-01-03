@@ -1,6 +1,8 @@
 from zope.interface import implements
 from zope.component import queryAdapter
 from zope.component import queryMultiAdapter
+from zope.component import getUtility
+from plone.registry.interfaces import IRegistry
 
 from quintagroup.seoptimizer.util import SortedDict
 from quintagroup.seoptimizer.interfaces import IMetaKeywords, IMappingMetaTags
@@ -47,14 +49,16 @@ class MappingMetaTags(object):
 
     def __init__(self, context):
         self.context = context
-        pps = queryMultiAdapter((self.context, self.context.REQUEST),
-                                name="plone_portal_state")
-        self.gseo = queryAdapter(pps.portal(), ISEOConfigletSchema)
+#         pps = queryMultiAdapter((self.context, self.context.REQUEST),
+#                                 name="plone_portal_state")
+#         self.gseo = queryAdapter(pps.portal(), ISEOConfigletSchema)
+        self.gseo = getUtility(IRegistry).forInterface(ISEOConfigletSchema)
 
     def getMappingMetaTags(self):
         """ See interface.
         """
         metadata_name = SortedDict()
+
         if self.gseo:
             for mt in self.gseo.metatags_order:
                 if mt in METADATA_MAPS:
