@@ -154,7 +154,7 @@ class SEOContext(BrowserView):
             in seo_properties.
         """
         result = []
-        if self.gseo:
+        if self.gseo and self.gseo.default_custom_metatags :
             for tag in set(self.gseo.default_custom_metatags):
                 name_value = tag.split(SEPERATOR)
                 if name_value[0]:
