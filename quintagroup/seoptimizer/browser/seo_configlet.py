@@ -78,13 +78,13 @@ class ISEOConfigletBaseSchema(Interface):
 
 
 class ISEOConfigletAdvancedSchema(Interface):
-#     custom_script = SourceText(
-#         title=_("label_custom_script", default=u'Header JavaScript'),
-#         description=_("help_custom_script",
-#                       default=u"This JavaScript code will be included in "
-#                       "the rendered HTML as entered in the page header."),
-#         default=u'',
-#         required=False)
+    custom_script = SourceText(
+        title=_("label_custom_script", default=u'Header JavaScript'),
+        description=_("help_custom_script",
+                      default=u"This JavaScript code will be included in "
+                      "the rendered HTML as entered in the page header."),
+        default=u'',
+        required=False)
 
     fields = List(
         title=_("label_fields", default='Fields for keywords statistic '

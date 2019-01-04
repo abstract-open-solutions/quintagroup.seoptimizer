@@ -27,7 +27,7 @@
     <value></value>
   </record>  
   <record name="quintagroup.seoptimizer.browser.seo_configlet.ISEOConfigletSchema.types_seo_enabled" interface="quintagroup.seoptimizer.browser.seo_configlet.ISEOConfigletSchema" field="types_seo_enabled">
-    <field type="plone.registry.field.Set">
+    <field type="plone.registry.field.List">
       <default/>
       <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="quintagroup.seoptimizer" ns0:translate="help_fields">Fill in fields (one per line) which statistics of keywords usage should be calculated for.</description>
       <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="quintagroup.seoptimizer" ns0:translate="label_fields">Fields for keywords statistic calculation.</title>
@@ -42,7 +42,7 @@
     </value>   	    	    	    	    	    	    	
   </record>  
   <record name="quintagroup.seoptimizer.browser.seo_configlet.ISEOConfigletSchema.types_seo_enabled" interface="quintagroup.seoptimizer.browser.seo_configlet.ISEOConfigletSchema" field="types_seo_enabled">
-    <field type="plone.registry.field.Set">
+    <field type="plone.registry.field.List">
       <default/>
       <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="quintagroup.seoptimizer" ns0:translate="description_seo_content_types">Select content types that will have SEO properties enabled.</description>
       <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="quintagroup.seoptimizer" ns0:translate="label_content_type_title">Content Types</title>
@@ -57,7 +57,7 @@
     </value>   	    	    	    	    	    	    	
   </record>    
   <record name="quintagroup.seoptimizer.browser.seo_configlet.ISEOConfigletSchema.metatags_order" interface="quintagroup.seoptimizer.browser.seo_configlet.ISEOConfigletSchema" field="metatags_order">
-    <field type="plone.registry.field.Set">
+    <field type="plone.registry.field.List">
       <default/>
       <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="quintagroup.seoptimizer" ns0:translate="help_metatags_order">Fill in meta tags (one per line) in the order in which they will appear on site source pages.Example: "metaname accessor".</description>
       <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="quintagroup.seoptimizer" ns0:translate="label_metatags_order">Meta tags order in the page.</title>
@@ -85,7 +85,7 @@
     	</value>   	    	    	    	    	    	    	
   </record>
   <record name="quintagroup.seoptimizer.browser.seo_configlet.ISEOConfigletSchema.default_custom_metatags" interface="quintagroup.seoptimizer.browser.seo_configlet.ISEOConfigletSchema" field="default_custom_metatags">
-    <field type="plone.registry.field.Set">
+    <field type="plone.registry.field.List">
       <default/>
       <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="quintagroup.seoptimizer" ns0:translate="help_default_custom_metatags">Fill in custom metatag names (one per line) which will appear on qseo_properties edit tab.Example: "metaname|metacontent" or "metaname".</description>
       <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="quintagroup.seoptimizer" ns0:translate="label_default_custom_metatags">Default custom metatags.</title>
@@ -96,7 +96,7 @@
     <value/>
   </record>
   <record name="quintagroup.seoptimizer.browser.seo_configlet.ISEOConfigletSchema.fields" interface="quintagroup.seoptimizer.browser.seo_configlet.ISEOConfigletSchema" field="fields">
-    <field type="plone.registry.field.Set">
+    <field type="plone.registry.field.List">
       <default/>
       <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="quintagroup.seoptimizer" ns0:translate="help_fields">Fill in fields (one per line) which statistics of keywords usage should be calculated for.</description>
       <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="quintagroup.seoptimizer" ns0:translate="label_fields">Fields for keywords statistic calculation.</title>
@@ -111,7 +111,7 @@
     </value>
   </record>
   <record name="quintagroup.seoptimizer.browser.seo_configlet.ISEOConfigletSchema.stop_words" interface="quintagroup.seoptimizer.browser.seo_configlet.ISEOConfigletSchema" field="stop_words">
-    <field type="plone.registry.field.Set">
+    <field type="plone.registry.field.List">
       <default/>
       <description xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="quintagroup.seoptimizer" ns0:translate="help_stop_words">Fill in stop words (one per line) which will be excluded from keywords statistics calculation.</description>
       <title xmlns:ns0="http://xml.zope.org/namespaces/i18n" ns0:domain="quintagroup.seoptimizer" ns0:translate="label_stop_words">Stop words.</title>
