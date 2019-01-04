@@ -3,7 +3,7 @@ from plone.app.registry.browser import controlpanel
 from zope.interface import Interface
 from zope.interface import implements
 from zope.component import adapts
-from zope.schema import Bool, Choice, Tuple, List,Set
+from zope.schema import Bool, Choice, Tuple, List,Set,TextLine
 from zope.schema import SourceText
 # BBB Support different versions of Plone
 # getSite = None
@@ -51,6 +51,8 @@ class ISEOConfigletBaseSchema(Interface):
                       default='Fill in meta tags (one per line) in the order '
                       'in which they will appear on site source pages. '
                       'Example: "metaname accessor".'),
+        default=list(),
+        value_type=TextLine(title=_(u"label_metatags_order")),                          
         required=False)
 
     types_seo_enabled = List(
@@ -70,17 +72,19 @@ class ISEOConfigletBaseSchema(Interface):
                       default='Fill in custom metatag names (one per line) '
                       'which will appear on qseo_properties edit tab. '
                       'Example: "metaname|metacontent" or "metaname".'),
+        default=list(),
+        value_type=TextLine(title=_(u"label_default_custom_metatags",default="Default custom metatags")),                                   
         required=False)
 
 
 class ISEOConfigletAdvancedSchema(Interface):
-    custom_script = SourceText(
-        title=_("label_custom_script", default=u'Header JavaScript'),
-        description=_("help_custom_script",
-                      default=u"This JavaScript code will be included in "
-                      "the rendered HTML as entered in the page header."),
-        default=u'',
-        required=False)
+#     custom_script = SourceText(
+#         title=_("label_custom_script", default=u'Header JavaScript'),
+#         description=_("help_custom_script",
+#                       default=u"This JavaScript code will be included in "
+#                       "the rendered HTML as entered in the page header."),
+#         default=u'',
+#         required=False)
 
     fields = List(
         title=_("label_fields", default='Fields for keywords statistic '
@@ -88,6 +92,8 @@ class ISEOConfigletAdvancedSchema(Interface):
         description=_("help_fields", default='Fill in fields (one per line)'
                       'which statistics of keywords usage should '
                       'be calculated for.'),
+        default=list(),
+        value_type=TextLine(title=_(u"label_fields")),                  
         required=False)
 
     stop_words = List(
@@ -95,6 +101,8 @@ class ISEOConfigletAdvancedSchema(Interface):
         description=_("help_stop_words", default='Fill in stop words '
                       '(one per line) which will be excluded from keywords '
                       'statistics calculation.'),
+        default=list(),
+        value_type=TextLine(title=_(u"label_stop_words")),                      
         required=False)
 
     external_keywords_test = Bool(
