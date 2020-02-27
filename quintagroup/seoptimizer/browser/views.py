@@ -182,7 +182,7 @@ class SEOContextPropertiesView(BrowserView):
         self.pps = queryMultiAdapter((self.context, self.request),
                                      name="plone_portal_state")
 #         self.gseo = queryAdapter(self.pps.portal(), ISEOConfigletSchema)
-        self.gseo = getUtility(IRegistry).forInterface(ISEOConfigletSchema)        
+        self.gseo = getUtility(IRegistry).forInterface(ISEOConfigletSchema)
 
     def test(self, condition, first, second):
         """
@@ -276,7 +276,7 @@ class SEOContextPropertiesView(BrowserView):
         """ Update seo custom metatags properties.
         """
         globalCustomMetaTags = []
-        if self.gseo:
+        if self.gseo and self.gseo.default_custom_metatags:
             custom_meta_tags = self.gseo.default_custom_metatags
             for tag in custom_meta_tags:
                 name_value = tag.split(SEPERATOR)
@@ -367,7 +367,7 @@ class VisibilityCheckerView(BrowserView):
         aq_inner(self.context)
         plone = queryMultiAdapter((self, self.request),
                                   name="plone_portal_state").portal()
-        
+
 #         adapter = ISEOConfigletSchema(plone)
         setting = getUtility(IRegistry).forInterface(ISEOConfigletSchema)
         return bool(self.context.portal_type in set(setting.types_seo_enabled))
