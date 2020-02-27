@@ -30,11 +30,12 @@ class SEOTagsViewlet(ViewletBase):
     """
 
     def render(self):
-        TEMPLATE = '<meta name="%s" content="%s"/>'
+        TEMPLATE = '<meta %s="%s" content="%s"/>'
         enc = getSiteEncoding(self.context)
         sfuncd = lambda x, enc=enc: safe_unicode(x, enc)
-        return u'\n'.join([TEMPLATE % tuple(map(sfuncd, (k, v)))
-                           for k, v in self.listMetaTags().items()])
+        return u'\n'.join([TEMPLATE % tuple(
+            map(sfuncd, ('property' if k.startswith('og:') else 'name', k, v))
+            ) for k, v in self.listMetaTags().items()])
 
     def listMetaTags(self):
         """Calculate list metatags"""
